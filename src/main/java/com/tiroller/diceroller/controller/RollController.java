@@ -55,12 +55,12 @@ public class RollController {
 
     @GetMapping("/roll/flagship")
     public Result flagshipRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "9") String combat) {
-        return service.rollForFlagship(diceSides, combat, count);
+        return service.rollForNonDBUnit(diceSides, combat, count);
     }
 
     @GetMapping("/roll/spacecannon")
     public Result spaceCannonRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "5") String combat) {
-        return service.rollForSpaceCannon(diceSides, combat, count);
+        return service.rollForNonDBUnit(diceSides, combat, count);
     }
 
 

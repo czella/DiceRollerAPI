@@ -1,6 +1,7 @@
 package com.tiroller.diceroller.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Result {
@@ -19,6 +20,15 @@ public class Result {
         ArrayList<Integer> diceRolls = rollDice(diceSides, count);
         this.rolls = diceRolls;
         this.hits = calculateHits(diceSides, diceRolls, combat, modifier);
+    }
+
+    public Result(int diceSides, int combat, int count, ArrayList<Integer> rolls, int modifier) {
+        this.diceSides = diceSides;
+        this.combat = combat;
+        this.count = count;
+        this.modifier = modifier;
+        this.rolls = rolls;
+        this.hits = calculateHits(diceSides, rolls, combat, modifier);
     }
 
     public Result(int diceSides, int combat, int count) {
