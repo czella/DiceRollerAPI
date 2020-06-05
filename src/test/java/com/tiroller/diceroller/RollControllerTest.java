@@ -4,7 +4,7 @@ import com.tiroller.diceroller.controller.RollController;
 import com.tiroller.diceroller.model.Result;
 import com.tiroller.diceroller.repository.UnitRepository;
 import com.tiroller.diceroller.service.RollService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -35,7 +35,7 @@ public class RollControllerTest {
     private RollController rollController;
 
     @Test
-    public void infantryRoll() throws Exception {
+    public void testInfantryRoll() throws Exception {
         Result result = new Result(10, 8, 1, 0);
         given(rollController.infantryRoll("infantry", "10", "1", "0")).willReturn(result);
         mvc.perform(get("/roll/infantry")
@@ -48,7 +48,7 @@ public class RollControllerTest {
     }
 
     @Test
-    public void fighterRoll() throws Exception {
+    public void testFighterRoll() throws Exception {
         Result result = new Result(10, 9, 1, 0);
         given(rollController.fighterRoll("fighter", "10", "1", "0")).willReturn(result);
         mvc.perform(get("/roll/fighter")
@@ -61,7 +61,7 @@ public class RollControllerTest {
     }
 
     @Test
-    public void carrierRoll() throws Exception {
+    public void testCarrierRoll() throws Exception {
         Result result = new Result(10, 9, 1, 0);
         given(rollController.carrierRoll( "10", "1", "0")).willReturn(result);
         mvc.perform(get("/roll/carrier")
@@ -74,7 +74,7 @@ public class RollControllerTest {
     }
 
     @Test
-    public void destroyerRoll() throws Exception {
+    public void testDestroyerRoll() throws Exception {
         Result result = new Result(10, 9, 1, 0);
         given(rollController.destroyerRoll("destroyer", "10", "1", "0")).willReturn(result);
         mvc.perform(get("/roll/destroyer")
@@ -87,7 +87,7 @@ public class RollControllerTest {
     }
 
     @Test
-    public void cruiserRoll() throws Exception {
+    public void testCruiserRoll() throws Exception {
         Result result = new Result(10, 7, 1, 0);
         given(rollController.cruiserRoll("cruiser", "10", "1", "0")).willReturn(result);
         mvc.perform(get("/roll/cruiser")
@@ -100,7 +100,7 @@ public class RollControllerTest {
     }
 
     @Test
-    public void dreadRoll() throws Exception {
+    public void testDreadRoll() throws Exception {
         Result result = new Result(10, 5, 1, 0);
         given(rollController.dreadRoll("dread", "10", "1", "0")).willReturn(result);
         mvc.perform(get("/roll/dread")
@@ -113,7 +113,7 @@ public class RollControllerTest {
     }
 
     @Test
-    public void warsunRoll() throws Exception {
+    public void testWarsunRoll() throws Exception {
         Result result = new Result(10, 7, 1, 0);
         given(rollController.warsunRoll( "10", "1", "0")).willReturn(result);
         mvc.perform(get("/roll/warsun")
@@ -126,10 +126,23 @@ public class RollControllerTest {
     }
 
     @Test
-    public void flagshipRoll() throws Exception {
+    public void testFlagshipRoll() throws Exception {
         Result result = new Result(10, 9, 1, 0);
         given(rollController.flagshipRoll( "10", "1", "9")).willReturn(result);
         mvc.perform(get("/roll/flagship")
+                .contentType(APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("diceSides", is(result.getDiceSides())))
+                .andExpect(jsonPath("combat", is(result.getCombat())))
+                .andExpect(jsonPath("count", is(result.getCount())))
+                .andExpect(jsonPath("modifier", is(result.getModifier())));
+    }
+
+    @Test
+    public void testSpaceCannonRoll() throws Exception {
+        Result result = new Result(10, 5, 1, 0);
+        given(rollController.spaceCannonRoll( "10", "1", "5")).willReturn(result);
+        mvc.perform(get("/roll/spacecannon")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("diceSides", is(result.getDiceSides())))

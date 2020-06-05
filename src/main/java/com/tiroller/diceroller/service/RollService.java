@@ -22,4 +22,10 @@ public class RollService {
     public Result rollForFlagship(String diceSides, String combat, String count) {
         return new Result(Integer.parseInt(diceSides), Integer.parseInt(combat), Integer.parseInt(count));
     }
+
+     public Result rollForSpaceCannon(String diceSides, String combat, String count) {
+        return new Result(Integer.parseInt(diceSides), Integer.parseInt(combat), Integer.parseInt(count));
+    }
+
+
 }
