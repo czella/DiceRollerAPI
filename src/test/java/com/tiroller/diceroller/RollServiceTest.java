@@ -4,8 +4,6 @@ import com.tiroller.diceroller.model.Result;
 import com.tiroller.diceroller.model.Unit;
 import com.tiroller.diceroller.repository.UnitRepository;
 import com.tiroller.diceroller.service.RollService;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,7 +36,7 @@ public class RollServiceTest {
 
     @Test
     public void testDiceSidesForNonDBUnit() {
-        Result result = rollService.rollForNonDBUnit("10", "9", "3");
+        Result result = rollService.rollForNonDBUnit("Test", "10", "9", "3");
         assertEquals(result.getDiceSides(), 10);
     }
 
@@ -55,7 +53,7 @@ public class RollServiceTest {
     public void testRollCountForNonDBUnits() {
         Random randomGenerator = new Random();
         int count = randomGenerator.nextInt(6) + 1;
-        Result result = rollService.rollForNonDBUnit("10", "9", Integer.toString(count));
+        Result result = rollService.rollForNonDBUnit("Test", "10", "9", Integer.toString(count));
         assertEquals(result.getRolls().size(), count);
     }
 

@@ -1,6 +1,7 @@
 package com.tiroller.diceroller;
 
 import com.tiroller.diceroller.model.Unit;
+import com.tiroller.diceroller.repository.UnitTypeRepository;
 import com.tiroller.diceroller.seeder.DataSeeder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,13 +18,16 @@ public class DicerollerApplication implements CommandLineRunner {
     @Autowired
     private UnitRepository unitRepository;
 
+    @Autowired
+    private UnitTypeRepository unitTypeRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(DicerollerApplication.class, args);
     }
 
     @Override
     public void run(String... args) {
-        DataSeeder seeder = new DataSeeder(unitRepository);
+        DataSeeder seeder = new DataSeeder(unitRepository, unitTypeRepository);
         log.info("StartApplication...");
         seeder.seed();
     }

@@ -3,11 +3,13 @@ package com.tiroller.diceroller.controller;
 import com.tiroller.diceroller.model.Result;
 import com.tiroller.diceroller.service.RollService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class RollController {
 
     @Autowired
@@ -55,12 +57,12 @@ public class RollController {
 
     @GetMapping("/roll/flagship")
     public Result flagshipRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "9") String combat) {
-        return service.rollForNonDBUnit(diceSides, combat, count);
+        return service.rollForNonDBUnit("Flagship", diceSides, combat, count);
     }
 
     @GetMapping("/roll/spacecannon")
     public Result spaceCannonRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "5") String combat) {
-        return service.rollForNonDBUnit(diceSides, combat, count);
+        return service.rollForNonDBUnit("Space cannon", diceSides, combat, count);
     }
 
 

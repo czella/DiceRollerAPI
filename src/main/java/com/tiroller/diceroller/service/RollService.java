@@ -20,12 +20,12 @@ public class RollService {
     public Result roll(String diceSides, String id, String count, String modifier) {
         Unit unit = repository.findUnitById(id);
         ArrayList<Integer> rolls = rollDice(Integer.parseInt(diceSides), Integer.parseInt(count));
-//        return new Result(Integer.parseInt(diceSides), unit.getCombat(), Integer.parseInt(count), Integer.parseInt(modifier));
-        return new Result(Integer.parseInt(diceSides), unit.getCombat(), Integer.parseInt(count), rolls, Integer.parseInt(modifier));
+        return new Result(unit.getName(), Integer.parseInt(diceSides), unit.getCombat(), Integer.parseInt(count), rolls, Integer.parseInt(modifier));
     }
 
-    public Result rollForNonDBUnit(String diceSides, String combat, String count) {
-        return new Result(Integer.parseInt(diceSides), Integer.parseInt(combat), Integer.parseInt(count));
+    public Result rollForNonDBUnit(String unitName, String diceSides, String combat, String count) {
+        ArrayList<Integer> rolls = rollDice(Integer.parseInt(diceSides), Integer.parseInt(count));
+        return new Result(unitName, Integer.parseInt(diceSides), Integer.parseInt(combat), Integer.parseInt(count), rolls, 0);
     }
 
     public ArrayList<Integer> rollDice(int diceSides, int count) {

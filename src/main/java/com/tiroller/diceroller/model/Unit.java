@@ -1,7 +1,10 @@
 package com.tiroller.diceroller.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 
 @Entity
 public class Unit {
@@ -22,27 +25,15 @@ public class Unit {
         return "Unit{" + "name: " + name + ", combat: " + combat + "}";
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getCombat() {
         return combat;
-    }
-
-    public void setCombat(int combat) {
-        this.combat = combat;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 }

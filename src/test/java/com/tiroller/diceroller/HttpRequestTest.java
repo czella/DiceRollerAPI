@@ -17,7 +17,6 @@ public class HttpRequestTest {
 
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
-        System.out.println("http://localhost:" + port + "/roll");
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/roll",
                 String.class)).contains("Welcome to DiceRoller!");
     }

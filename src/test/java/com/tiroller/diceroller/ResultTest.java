@@ -27,7 +27,7 @@ public class ResultTest {
                 actualHits++;
             }
         }
-        Result result = new Result(diceSides, combat, count, rolls, 0 );
+        Result result = new Result("Test", diceSides, combat, count, rolls, 0 );
         assertEquals(result.getHits(), actualHits);
     }
 }
