@@ -1,23 +1,31 @@
 package com.tiroller.diceroller.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 
 @Entity
+@Table(name = "units")
 public class Unit {
     @Id
     private String id;
     private String name;
     private int combat;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unit_type_id")
+    private UnitType type;
+
     public Unit() {};
+    public Unit(String id, String name, int combat, UnitType type) {
+        this.id = id;
+        this.name = name;
+        this.combat = combat;
+        this.type = type;
+    }
     public Unit(String id, String name, int combat) {
         this.id = id;
         this.name = name;
         this.combat = combat;
+        this.type = new UnitType("Test");
     }
 
     @Override

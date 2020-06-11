@@ -1,14 +1,24 @@
 package com.tiroller.diceroller.model;
 
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "unit_types")
 public class UnitType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "serial")
+    @JoinColumn(name = "unit_type_id", nullable = false, foreignKey = @ForeignKey(name="unit_type_id"))
     private Long id;
     private String name;
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Unit> units = new ArrayList<>();
 
     public UnitType() {
     }
@@ -23,5 +33,9 @@ public class UnitType {
 
     public String getName() {
         return name;
+    }
+
+    public List<Unit> getUnits() {
+        return units;
     }
 }
