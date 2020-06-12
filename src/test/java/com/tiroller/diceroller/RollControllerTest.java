@@ -3,6 +3,7 @@ package com.tiroller.diceroller;
 import com.tiroller.diceroller.controller.RollController;
 import com.tiroller.diceroller.model.Result;
 import com.tiroller.diceroller.repository.UnitRepository;
+import com.tiroller.diceroller.repository.UnitTypeRepository;
 import com.tiroller.diceroller.service.RollService;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,6 +35,9 @@ public class RollControllerTest {
 
     @MockBean
     private UnitRepository unitRepository;
+
+    @MockBean
+    private UnitTypeRepository unitTypeRepository;
 
     @MockBean
     private RollController rollController;

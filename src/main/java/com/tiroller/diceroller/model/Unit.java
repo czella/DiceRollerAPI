@@ -21,12 +21,6 @@ public class Unit {
         this.combat = combat;
         this.type = type;
     }
-    public Unit(String id, String name, int combat) {
-        this.id = id;
-        this.name = name;
-        this.combat = combat;
-        this.type = new UnitType("Test");
-    }
 
     @Override
     public String toString() {

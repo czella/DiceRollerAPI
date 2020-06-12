@@ -1,7 +1,9 @@
 package com.tiroller.diceroller.controller;
 
 import com.tiroller.diceroller.model.Unit;
+import com.tiroller.diceroller.model.UnitType;
 import com.tiroller.diceroller.repository.UnitRepository;
+import com.tiroller.diceroller.repository.UnitTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +18,17 @@ public class UnitController {
     @Autowired
     private UnitRepository unitRepository;
 
+    @Autowired
+    private UnitTypeRepository unitTypeRepository;
+
     @GetMapping("/units")
     public List<Unit> getUnits() {
         return unitRepository.findAll();
     }
 
     @GetMapping("/unittypes")
-    public List<Unit> getUnitTypes() {
-        return unitRepository.findAll();
+    public List<UnitType> getUnitTypes() {
+        return unitTypeRepository.findAll();
     }
 
 }

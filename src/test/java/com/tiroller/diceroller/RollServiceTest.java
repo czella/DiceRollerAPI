@@ -2,6 +2,7 @@ package com.tiroller.diceroller;
 
 import com.tiroller.diceroller.model.Result;
 import com.tiroller.diceroller.model.Unit;
+import com.tiroller.diceroller.model.UnitType;
 import com.tiroller.diceroller.repository.UnitRepository;
 import com.tiroller.diceroller.service.RollService;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ public class RollServiceTest {
     @Autowired
     private RollService rollService;
 
-    private Unit testFighter = new Unit("fighter", "Fighter", 9);
+    private Unit testFighter = new Unit("fighter", "Fighter", 9, new UnitType("Test type"));
 
     @Test
     public void testDiceSides() {
