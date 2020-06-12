@@ -7,6 +7,7 @@ import com.tiroller.diceroller.repository.UnitTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,6 +30,12 @@ public class UnitController {
     @GetMapping("/unittypes")
     public List<UnitType> getUnitTypes() {
         return unitTypeRepository.findAll();
+    }
+
+    @GetMapping("/unitsbytype")
+    public List<Unit> getUnitsByType(@RequestParam(value = "type", defaultValue = "Infantry") String type) {
+        UnitType unitType = unitTypeRepository.findUnitTypeByName(type);
+        return unitRepository.findUnitsByType(unitType);
     }
 
 }

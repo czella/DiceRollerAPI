@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface UnitTypeRepository extends CrudRepository<UnitType, Long> {
     List<UnitType> findAll();
+    UnitType findUnitTypeByName(String name);
 }
