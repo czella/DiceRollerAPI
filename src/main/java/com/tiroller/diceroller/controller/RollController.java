@@ -56,13 +56,13 @@ public class RollController {
     }
 
     @GetMapping("/roll/flagship")
-    public Result flagshipRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "9") String combat) {
-        return service.rollForNonDBUnit("Flagship", diceSides, combat, count);
+    public Result flagshipRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "9") String combat, @RequestParam(value = "modifier", defaultValue = "0") String modifier) {
+        return service.rollForNonDBUnit("Flagship", diceSides, combat, count, modifier);
     }
 
     @GetMapping("/roll/spacecannon")
-    public Result spaceCannonRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "5") String combat) {
-        return service.rollForNonDBUnit("Space cannon", diceSides, combat, count);
+    public Result spaceCannonRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "5") String combat, @RequestParam(value = "modifier", defaultValue = "0") String modifier) {
+        return service.rollForNonDBUnit("Space cannon", diceSides, combat, count, modifier);
     }
 
 

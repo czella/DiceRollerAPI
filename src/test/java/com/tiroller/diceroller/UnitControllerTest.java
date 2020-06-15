@@ -69,7 +69,6 @@ public class UnitControllerTest {
 
     @Test
     public void testGetUnitTypes() throws Exception {
-
         List<UnitType> result = new ArrayList<>();
         result.add(type1);
         result.add(type2);

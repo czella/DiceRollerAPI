@@ -37,7 +37,7 @@ public class RollServiceTest {
 
     @Test
     public void testDiceSidesForNonDBUnit() {
-        Result result = rollService.rollForNonDBUnit("Test", "10", "9", "3");
+        Result result = rollService.rollForNonDBUnit("Test", "10", "9", "3", "0");
         assertEquals(result.getDiceSides(), 10);
     }
 
@@ -54,7 +54,7 @@ public class RollServiceTest {
     public void testRollCountForNonDBUnits() {
         Random randomGenerator = new Random();
         int count = randomGenerator.nextInt(6) + 1;
-        Result result = rollService.rollForNonDBUnit("Test", "10", "9", Integer.toString(count));
+        Result result = rollService.rollForNonDBUnit("Test", "10", "9", Integer.toString(count), "0");
         assertEquals(result.getRolls().size(), count);
     }
 

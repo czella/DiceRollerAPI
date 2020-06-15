@@ -157,7 +157,7 @@ public class RollControllerTest {
     @Test
     public void testFlagshipRoll() throws Exception {
         Result result = new Result("Flagship", 10, 9, 1, rolls, 0);
-        given(rollController.flagshipRoll( "10", "1", "9")).willReturn(result);
+        given(rollController.flagshipRoll( "10", "1", "9", "0")).willReturn(result);
         mvc.perform(get("/roll/flagship")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -172,7 +172,7 @@ public class RollControllerTest {
     @Test
     public void testSpaceCannonRoll() throws Exception {
         Result result = new Result("Space Cannon",10, 5, 1, rolls, 0);
-        given(rollController.spaceCannonRoll( "10", "1", "5")).willReturn(result);
+        given(rollController.spaceCannonRoll( "10", "1", "5", "0")).willReturn(result);
         mvc.perform(get("/roll/spacecannon")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
