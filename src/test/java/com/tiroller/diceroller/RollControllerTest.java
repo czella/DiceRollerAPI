@@ -128,7 +128,7 @@ public class RollControllerTest {
     public void testDreadRoll() throws Exception {
         Result result = new Result("Dreadnought", 10, 5, 1, rolls, 0);
         given(rollController.dreadRoll("dread", "10", "1", "0")).willReturn(result);
-        mvc.perform(get("/roll/dread")
+        mvc.perform(get("/roll/dreadnought")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("unitName", is(result.getUnitName())))

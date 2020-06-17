@@ -45,7 +45,7 @@ public class RollController {
         return service.roll(diceSides, id, count, modifier);
     }
 
-    @GetMapping("/roll/dread")
+    @GetMapping("/roll/dreadnought")
     public Result dreadRoll(@RequestParam(value = "id", defaultValue = "dread") String id, @RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "modifier", defaultValue = "0") String modifier) {
         return service.roll(diceSides, id, count, modifier);
     }
