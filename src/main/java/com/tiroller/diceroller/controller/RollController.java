@@ -1,12 +1,14 @@
 package com.tiroller.diceroller.controller;
 
 import com.tiroller.diceroller.model.Result;
+import com.tiroller.diceroller.model.UnitRoll;
 import com.tiroller.diceroller.service.RollService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -63,6 +65,11 @@ public class RollController {
     @GetMapping("/roll/spacecannon")
     public Result spaceCannonRoll(@RequestParam(value = "diceSides", defaultValue = "10") String diceSides, @RequestParam(value = "count", defaultValue = "1") String count, @RequestParam(value = "combat", defaultValue = "5") String combat, @RequestParam(value = "modifier", defaultValue = "0") String modifier) {
         return service.rollForNonDBUnit("Space cannon", diceSides, combat, count, modifier);
+    }
+
+    @PostMapping(path = "/roll/combined", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public List<Result> combinedRoll(@RequestBody List<UnitRoll> rolls) {
+        return service.combinedRoll(rolls);
     }
 
 
